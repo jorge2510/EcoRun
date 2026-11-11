@@ -93,4 +93,10 @@ It triggers on its own at the start of substantial tasks, or when you talk about
 
 ## License
 
-[MIT](LICENSE) © 2026 Jorge Cabrera. EcoRun is an independent project and is not affiliated with Anthropic.
+[MIT + Commons Clause](LICENSE) © 2026 Jorge Cabrera.
+
+You can use EcoRun for free, including at work, and modify and share it, as long as you keep the license notice. What you may not do without the author's written permission is **sell** it: offer it for a fee, on its own or inside a paid product or service whose value comes mainly from EcoRun (including skill marketplaces). For a commercial license, contact [@jorge2510](https://github.com/jorge2510) on GitHub.
+
+Versions released before 1.2.0 were distributed under MIT and remain under that license.
+
+EcoRun is an independent project and is not affiliated with Anthropic.

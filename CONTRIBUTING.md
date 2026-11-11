@@ -29,6 +29,10 @@ npx @anthropic-ai/claude-code plugin validate .
 3. Si el cambio afecta el comportamiento, agrega o actualiza un caso en `skills/ecorun/evals/`.
 4. Vuelve a generar `dist/ecorun.zip` con `scripts/build.py` y súbelo en el mismo PR.
 
+## Licencia de las contribuciones
+
+EcoRun se distribuye bajo MIT + Commons Clause (ver [LICENSE](LICENSE)). Al enviar un pull request aceptas que tu contribución se publique bajo esa misma licencia.
+
 ## Reportar problemas
 
 Abre un issue con: entorno (claude.ai, Cowork, Claude Code o API), modelo de la sesión, lo que pediste, lo que hizo EcoRun y lo que esperabas.

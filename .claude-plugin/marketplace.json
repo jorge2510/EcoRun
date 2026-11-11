@@ -1,0 +1,18 @@
+{
+  "name": "ecorun",
+  "description": "Marketplace de EcoRun: elige el modelo y el effort adecuados para cada tarea y ahorra tokens sin bajar la calidad.",
+  "owner": {
+    "name": "Jorge Cabrera",
+    "url": "https://github.com/jorge2510"
+  },
+  "plugins": [
+    {
+      "name": "ecorun",
+      "source": "./",
+      "description": "Skill de selección de modelo y effort, con tres subagentes en Haiku: eco-explorer, eco-log-reader y eco-extractor.",
+      "version": "1.2.0",
+      "category": "productivity",
+      "tags": ["model-routing", "tokens", "cost", "haiku"]
+    }
+  ]
+}

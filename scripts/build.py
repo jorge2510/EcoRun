@@ -2,7 +2,8 @@
 """Empaqueta la skill en dist/ecorun.zip para subirla a claude.ai o Cowork.
 
 El ZIP contiene una carpeta 'ecorun/' (debe coincidir con el name de la skill)
-con SKILL.md y references/. Los casos de prueba (evals/) no se incluyen.
+con SKILL.md, references/ y el LICENSE del repositorio. Los casos de prueba
+(evals/) no se incluyen.
 
 Uso: python3 scripts/build.py
 """
@@ -25,4 +26,8 @@ with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:
         info.compress_type = zipfile.ZIP_DEFLATED
         z.writestr(info, p.read_bytes())
         print(f"  + ecorun/{p.relative_to(SKILL).as_posix()}")
+    info = zipfile.ZipInfo("ecorun/LICENSE", date_time=(2026, 1, 1, 0, 0, 0))
+    info.compress_type = zipfile.ZIP_DEFLATED
+    z.writestr(info, (ROOT / "LICENSE").read_bytes())
+    print("  + ecorun/LICENSE")
 print(f"Listo: {OUT.relative_to(ROOT)} ({OUT.stat().st_size} bytes)")

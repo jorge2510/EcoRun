@@ -1,0 +1,14 @@
+{
+  "name": "ecorun",
+  "displayName": "EcoRun",
+  "version": "1.2.0",
+  "description": "Elige el modelo de Claude (Haiku, Sonnet, Opus o Fable) y el effort adecuados para cada tarea, y delega búsquedas, logs y extracción a subagentes en Haiku, para gastar menos tokens sin bajar la calidad.",
+  "author": {
+    "name": "Jorge Cabrera",
+    "url": "https://github.com/jorge2510"
+  },
+  "homepage": "https://github.com/jorge2510/EcoRun",
+  "repository": "https://github.com/jorge2510/EcoRun",
+  "license": "MIT + Commons Clause",
+  "keywords": ["model-routing", "tokens", "cost", "haiku", "subagents", "effort"]
+}

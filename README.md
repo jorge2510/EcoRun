@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img alt="Licencia MIT" src="https://img.shields.io/badge/licencia-MIT-green"></a>
-  <img alt="Versión" src="https://img.shields.io/badge/versión-1.0.0-blue">
+  <a href="LICENSE"><img alt="Licencia MIT + Commons Clause" src="https://img.shields.io/badge/licencia-MIT%20%2B%20Commons%20Clause-green"></a>
+  <img alt="Versión" src="https://img.shields.io/badge/versión-1.2.0-blue">
   <img alt="Claude.ai, Cowork y Claude Code" src="https://img.shields.io/badge/funciona%20en-Claude.ai%20%7C%20Cowork%20%7C%20Claude%20Code-orange">
 </p>
 
@@ -143,4 +143,10 @@ Las contribuciones son bienvenidas; lee [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licencia
 
-[MIT](LICENSE) © 2026 Jorge Cabrera. EcoRun es un proyecto independiente y no está afiliado a Anthropic.
+[MIT + Commons Clause](LICENSE) © 2026 Jorge Cabrera.
+
+Puedes usar EcoRun gratis, también en tu trabajo, y modificarla y compartirla, siempre que conserves el aviso de licencia. Lo que no está permitido sin autorización escrita del autor es **venderla**: ofrecerla por un pago, sola o dentro de un producto o servicio de pago cuyo valor venga principalmente de EcoRun (incluidos marketplaces de skills). Para pedir una licencia comercial, contacta a [@jorge2510](https://github.com/jorge2510) en GitHub.
+
+Las versiones publicadas antes de la 1.2.0 se distribuyeron bajo MIT y siguen bajo esa licencia.
+
+EcoRun es un proyecto independiente y no está afiliado a Anthropic.

@@ -33,5 +33,11 @@ Porque un subagente de plugin no puede reemplazar al `Explore` integrado de Clau
 ### Subí el ZIP a claude.ai y da error.
 La carpeta dentro del ZIP debe llamarse igual que la skill (`ecorun`). Usa el `dist/ecorun.zip` del repositorio o genéralo con `python3 scripts/build.py`. Verifica también que la ejecución de código esté activada.
 
+### ¿Puedo usar EcoRun en mi trabajo o en mi empresa?
+Sí, gratis. También puedes modificarla y compartirla, siempre que conserves el archivo `LICENSE`.
+
+### ¿Puedo vender EcoRun o publicarla en un marketplace de pago?
+No sin autorización escrita del autor. La licencia (MIT + Commons Clause) no permite venderla, ni sola ni dentro de un producto o servicio de pago cuyo valor venga principalmente de ella. Para una licencia comercial, contacta a [@jorge2510](https://github.com/jorge2510).
+
 ### Tengo dos skills parecidas instaladas.
 Desactiva o elimina la otra. Si dos skills de selección de modelo se activan a la vez, gastas tokens de más.

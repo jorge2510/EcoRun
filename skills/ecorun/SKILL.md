@@ -1,6 +1,7 @@
 ---
 name: ecorun
 description: EcoRun elige el modelo de Claude (Haiku, Sonnet, Opus o Fable) y el nivel de effort adecuados para cada tarea, para ahorrar tokens sin bajar la calidad del resultado. Si el modelo actual no es el adecuado, frena antes de hacer la tarea y espera a que el usuario elija modelo. Úsala SIEMPRE al empezar una tarea sustancial, ANTES de cualquier otra skill, herramienta, búsqueda o lectura de archivos (código, documentos, informes, análisis de datos, extracción, automatizaciones, investigación), cuando el usuario diga "qué modelo uso", "ahorrar tokens", "gastar menos", "optimizar costo", "cambiar de modelo", "effort", "subagentes", o cuando configure Claude Code, agentes o llamadas a la API. También en inglés ("which model should I use", "save tokens", "reduce cost", "model routing"). Úsala también cuando una tarea larga cambie de naturaleza a mitad de camino (por ejemplo, de diseñar a solo formatear).
+license: MIT + Commons Clause. Ver LICENSE.
 ---
 
 # EcoRun

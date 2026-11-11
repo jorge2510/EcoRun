@@ -2,6 +2,17 @@
 
 Todos los cambios importantes de EcoRun se registran aquí. El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el proyecto usa [versionado semántico](https://semver.org/lang/es/).
 
+## [1.2.0] — 2026-11-10
+
+### Cambiado
+- Licencia: de MIT a **MIT + Commons Clause**. EcoRun sigue siendo gratis para usar, modificar y compartir, pero venderla (sola o dentro de un producto o servicio de pago) requiere autorización escrita del autor. Las versiones anteriores siguen bajo MIT.
+- `dist/ecorun.zip` ahora incluye el archivo `LICENSE`, para que la licencia viaje con la skill.
+- La skill declara su licencia en el campo `license` del frontmatter.
+
+### Corregido
+- Se restauró la carpeta `.claude-plugin/` (`plugin.json`, `marketplace.json` e icono), que faltaba en el repositorio: `/plugin marketplace add jorge2510/EcoRun` vuelve a funcionar.
+- Se restauró la integración continua (`.github/workflows/validate.yml`), que corre `validate.py` y `build.py` en cada push y pull request.
+
 ## [1.1.0] — 2026-11-10
 
 ### Cambiado
