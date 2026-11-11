@@ -41,9 +41,9 @@ Ninguna skill puede cambiar el modelo de tu conversación principal; eso lo elig
 
 | Entorno | Qué pasa |
 |---|---|
-| **Claude.ai y apps** | Al empezar una tarea, si conviene otro modelo, escribe una línea como `Modelo sugerido: Sonnet · medium — tarea acotada` y sigue trabajando. Si ya estás en el correcto, no dice nada. |
-| **Cowork** | Igual que en claude.ai. Si Cowork le permite lanzar subagentes con modelo propio, delega en ellos el trabajo pesado de lectura. |
-| **Claude Code** | Enruta de verdad: manda la búsqueda, la lectura de logs y la extracción a subagentes en Haiku. Para la sesión principal te sugiere `/model` y `/effort` cuando conviene. |
+| **Claude.ai y apps** | **Compuerta:** antes de hacer la tarea la clasifica. Si conviene otro modelo, no la ejecuta: te manda un mensaje corto con el modelo sugerido (`Sonnet · medium`, por ejemplo) y espera. Cambias el modelo en el selector, respondes "continúa" y el modelo nuevo hace la tarea sin que repitas el pedido; o respondes "sigue aquí". Si ya estás en el modelo correcto, o la pregunta es tan corta que frenar costaría más que contestar, responde directo sin avisar. |
+| **Cowork** | Igual que en claude.ai. Si Cowork le permite lanzar subagentes con modelo propio, delega en ellos en vez de frenar. |
+| **Claude Code** | Enruta de verdad: manda la búsqueda, la lectura de logs y la extracción a subagentes en Haiku. Para la sesión principal usa la misma compuerta: frena y te sugiere `/model` y `/effort` antes de empezar. |
 | **API** | Te da las reglas para elegir el `model` por código según el tipo de paso. |
 
 **Fable es automático:** no tienes que configurar si tienes acceso. Si EcoRun intenta usar Fable y no está disponible, sigue con Opus en `high` sin preguntarte.
@@ -136,7 +136,8 @@ Las contribuciones son bienvenidas; lee [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Limitaciones
 
-- Ninguna skill puede cambiar el modelo de la conversación principal; EcoRun recomienda y, donde hay subagentes, delega.
+- Ninguna skill puede cambiar el modelo de la conversación principal; EcoRun frena antes de gastar y, donde hay subagentes, delega.
+- El turno de la compuerta igual paga la entrada (instrucciones, skill y tu mensaje) en el modelo actual. Lo que ahorra es la respuesta larga y el razonamiento del modelo caro, por eso solo frena en tareas sustanciales.
 - Los nombres de modelos y los precios cambian. La tabla de precios indica su fecha de verificación; si sale un modelo nuevo, EcoRun aplica el mismo criterio por familia (Haiku, Sonnet, Opus, Fable) y avisa que la tabla puede estar desactualizada.
 - Las cifras de ahorro citadas vienen de pruebas publicadas por Anthropic. Tu ahorro real depende de tus tareas; mídelo con `/usage` en Claude Code.
 

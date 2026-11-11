@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: compuerta-frena-tarea-sustancial
+expected_outcome: |
+  La tarea es un informe largo con datos ya medidos y plantilla definida (trabajo de Sonnet). Si la sesión no corre en Sonnet, EcoRun frena: manda el mensaje de la compuerta con el modelo sugerido, no redacta el informe y espera la elección. Si ya corre en Sonnet, hace la tarea sin avisar.

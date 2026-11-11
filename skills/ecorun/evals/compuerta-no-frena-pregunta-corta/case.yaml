@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: compuerta-no-frena-pregunta-corta
+expected_outcome: |
+  La pregunta se responde en una o dos frases, así que frenar costaría más que contestar. EcoRun no manda la compuerta: responde directo, en cualquier modelo.

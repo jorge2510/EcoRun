@@ -1,10 +1,16 @@
 # Preguntas frecuentes
 
 ### ¿EcoRun cambia el modelo por mí?
-No el de tu conversación principal: ninguna skill puede hacerlo. En claude.ai y Cowork te sugiere en una línea qué modelo usar; tú lo cambias en el selector. En Claude Code sí manda trabajo a subagentes en Haiku de forma automática, que es donde está la mayor parte del ahorro.
+No el de tu conversación principal: ninguna skill puede hacerlo. En claude.ai y Cowork frena antes de hacer la tarea y te dice qué modelo usar; tú lo cambias en el selector y respondes "continúa". En Claude Code sí manda trabajo a subagentes en Haiku de forma automática, que es donde está la mayor parte del ahorro.
 
 ### ¿Me va a llenar las respuestas de avisos?
-No. Solo escribe la línea de modelo sugerido cuando el modelo ideal es distinto al actual, y solo al empezar una tarea o cuando la tarea cambia de naturaleza.
+No. Solo frena cuando el modelo ideal es distinto al actual y la tarea es sustancial, y solo al empezar una tarea o cuando cambia de naturaleza. Una vez eliges modelo, no vuelve a preguntar por la misma tarea. Si le dices "no me preguntes", deja de frenar.
+
+### ¿Por qué frena en vez de hacer la tarea y recomendar al final?
+Porque recomendar después no ahorra nada: el modelo caro ya gastó los tokens. La compuerta clasifica primero, te avisa y espera. Si el modelo actual se queda corto para la tarea, frena siempre, porque ahí lo que está en juego es la calidad.
+
+### ¿Tengo que volver a escribir el pedido después de cambiar de modelo?
+No. Cambia el modelo en el selector y responde "continúa": el pedido original ya está en la conversación. Si prefieres un contexto más limpio, edita tu mensaje original y reenvíalo con el modelo nuevo.
 
 ### No tengo acceso a Fable. ¿Tengo que configurar algo?
 No. EcoRun lo detecta: si Fable no está disponible, usa Opus en `high` con verificación.

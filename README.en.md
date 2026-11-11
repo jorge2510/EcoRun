@@ -35,9 +35,9 @@ No skill can change the model of your main conversation; you choose that. What E
 
 | Surface | Behavior |
 |---|---|
-| **Claude.ai and apps** | When a task starts and another model fits better, it writes one line such as `Suggested model: Sonnet · medium — scoped task` and keeps working. If you're already on the right model, it says nothing. |
+| **Claude.ai and apps** | **Gate:** it classifies the task before doing it. If another model fits better, it does not run the task: it sends a short message with the suggested model (e.g. `Sonnet · medium`) and waits. Switch the model in the selector and reply "continue", and the new model does the task without you repeating the request; or reply "stay here". If you're already on the right model, or the question is so short that stopping would cost more than answering, it just answers. |
 | **Cowork** | Same as Claude.ai. If Cowork lets it spawn subagents with their own model, it delegates heavy reading to them. |
-| **Claude Code** | Real routing: search, log reading and extraction go to Haiku subagents. For the main session it suggests `/model` and `/effort` when worthwhile. |
+| **Claude Code** | Real routing: search, log reading and extraction go to Haiku subagents. For the main session it uses the same gate: it stops and suggests `/model` and `/effort` before starting. |
 | **API** | Gives you the rules to choose `model` in code per step type. |
 
 **Fable is automatic:** you don't configure anything. If Fable isn't available, EcoRun falls back to Opus at `high` without asking.

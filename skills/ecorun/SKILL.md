@@ -1,6 +1,6 @@
 ---
 name: ecorun
-description: EcoRun elige el modelo de Claude (Haiku, Sonnet, Opus o Fable) y el nivel de effort adecuados para cada tarea, para ahorrar tokens sin bajar la calidad del resultado. Úsala SIEMPRE al empezar una tarea sustancial (código, documentos, informes, análisis de datos, extracción, automatizaciones, investigación), cuando el usuario diga "qué modelo uso", "ahorrar tokens", "gastar menos", "optimizar costo", "cambiar de modelo", "effort", "subagentes", o cuando configure Claude Code, agentes o llamadas a la API. También en inglés ("which model should I use", "save tokens", "reduce cost", "model routing"). Úsala también cuando una tarea larga cambie de naturaleza a mitad de camino (por ejemplo, de diseñar a solo formatear).
+description: EcoRun elige el modelo de Claude (Haiku, Sonnet, Opus o Fable) y el nivel de effort adecuados para cada tarea, para ahorrar tokens sin bajar la calidad del resultado. Si el modelo actual no es el adecuado, frena antes de hacer la tarea y espera a que el usuario elija modelo. Úsala SIEMPRE al empezar una tarea sustancial, ANTES de cualquier otra skill, herramienta, búsqueda o lectura de archivos (código, documentos, informes, análisis de datos, extracción, automatizaciones, investigación), cuando el usuario diga "qué modelo uso", "ahorrar tokens", "gastar menos", "optimizar costo", "cambiar de modelo", "effort", "subagentes", o cuando configure Claude Code, agentes o llamadas a la API. También en inglés ("which model should I use", "save tokens", "reduce cost", "model routing"). Úsala también cuando una tarea larga cambie de naturaleza a mitad de camino (por ejemplo, de diseñar a solo formatear).
 ---
 
 # EcoRun
@@ -16,7 +16,7 @@ Nunca le pidas al usuario que configure o declare si tiene acceso a Fable. Decí
 1. Si la sesión actual corre en Fable → está disponible.
 2. Si en esta conversación (o en la memoria) el usuario dijo que no tiene Fable, o un intento de usar `fable` falló → no está disponible.
 3. En Claude Code, cuando una tarea pida Fable: lanza el subagente con `model: fable`. Si falla porque el modelo no está disponible, repite en ese mismo turno con `opus` y effort `high`, y sigue sin preguntar.
-4. En chat o Cowork, donde solo recomiendas, escribe la recomendación con su respaldo incluido, para que sirva tenga o no acceso:
+4. En la Compuerta (chat, Cowork o conversación principal de Claude Code), escribe la recomendación con su respaldo incluido, para que sirva tenga o no acceso:
    `Modelo sugerido: Fable · medium (si no lo tienes, Opus · high) — refactor grande.`
 
 Sin Fable, todo lo que abajo diga "Fable" pasa a "Opus en `high`, luego `xhigh`, con verificación obligatoria" (ver Escalera de calidad).
@@ -25,11 +25,50 @@ Sin Fable, todo lo que abajo diga "Fable" pasa a "Opus en `high`, luego `xhigh`,
 
 Ninguna skill puede cambiar el modelo de la conversación principal: eso lo hace el usuario (selector de modelo en la app, `/model` en Claude Code). Lo que sí se puede es recomendar a tiempo y, donde hay subagentes, mandar el trabajo a un modelo más barato.
 
-- **claude.ai, apps y Cowork:** recomienda. Si el modelo ideal es distinto al actual, escribe UNA línea al inicio de la respuesta y sigue trabajando con el modelo actual (no te detengas a esperar):
-  `Modelo sugerido: Sonnet · medium — tarea acotada con verificación fácil.`
-  Si el modelo actual ya es el correcto, no digas nada: esa línea también cuesta tokens. Repite la recomendación solo cuando la tarea cambie de naturaleza, no en cada mensaje. En Cowork, si puedes lanzar subagentes y elegir su modelo, delega como en Claude Code; si no, quédate con la recomendación.
-- **Claude Code:** aquí sí enrutas de verdad. Para trabajo de Haiku o Sonnet (leer, buscar, extraer, tareas acotadas) delega a un subagente con el modelo adecuado: usa uno de los subagentes de EcoRun (`eco-explorer`, `eco-log-reader`, `eco-extractor`, todos en Haiku) o pasa el parámetro `model` al lanzar cualquier subagente; ese parámetro tiene prioridad sobre el modelo de la sesión. La conversación principal se queda en su modelo; si conviene cambiarla, recomienda en una línea `/model <alias>` y `/effort <nivel>`. Detalles en `references/claude-code.md`.
+- **claude.ai, apps y Cowork:** usa la **Compuerta** (sección siguiente). Recomendar después de hacer la tarea no ahorra nada: el modelo actual ya gastó los tokens. En Cowork, si puedes lanzar subagentes y elegir su modelo, delega como en Claude Code en vez de frenar.
+- **Claude Code, conversación principal:** usa la misma Compuerta, recomendando `/model <alias>` y `/effort <nivel>`. Para subagentes, enruta como se explica abajo.
+- **Claude Code, subagentes:** aquí sí enrutas de verdad. Para trabajo de Haiku o Sonnet (leer, buscar, extraer, tareas acotadas) delega a un subagente con el modelo adecuado: usa uno de los subagentes de EcoRun (`eco-explorer`, `eco-log-reader`, `eco-extractor`, todos en Haiku) o pasa el parámetro `model` al lanzar cualquier subagente; ese parámetro tiene prioridad sobre el modelo de la sesión. Detalles en `references/claude-code.md`.
 - **API o apps que llaman a la API:** elige el `model` por código según el tipo de paso, no le pidas a un modelo que decida qué modelo usar. Ver `references/claude-code.md` (sección API).
+
+## Compuerta — frenar antes de gastar
+
+La compuerta es lo PRIMERO que haces en el turno. Antes de ella no leas archivos, no busques en la web, no cargues otras skills, no llames herramientas y no planifiques la tarea. Clasifica en pocas líneas con el Paso 1 y la Tabla de ruteo, nada más.
+
+### 1. Saber qué modelo está corriendo
+Búscalo en el system prompt (por ejemplo "The currently selected version of Claude is…"). Si no aparece, no frenes: haz la tarea normal. Frenar a ciegas molesta más de lo que ahorra.
+
+### 2. Decidir si frenas
+- **El modelo actual es el adecuado** → haz la tarea. No digas nada sobre modelos.
+- **El modelo actual es MENOR al necesario** → frena siempre. Aquí está en juego la calidad.
+- **Alcanza un modelo más barato** → frena solo si la tarea es sustancial: un documento, código de varias partes, un análisis, un informe, o algo que seguirá varios turnos. Si la respuesta completa sería más corta que el mensaje de la compuerta (una definición, un dato, un sí o no), respóndela de una vez: frenar costaría más que contestar.
+- **El usuario ya eligió en esta conversación** (cambió de modelo o dijo "sigue aquí") → no vuelvas a frenar por la misma tarea. Vuelve a evaluar solo cuando la tarea cambie de naturaleza.
+- **El usuario pidió no frenar** ("no me preguntes", "sigue siempre") → haz la tarea y, como mucho, deja la línea de recomendación al final.
+
+### 3. El mensaje de la compuerta
+Corto, sin adelantar nada de la tarea (ni borrador, ni esquema, ni "mientras tanto te dejo…"). Plantilla:
+
+```
+EcoRun — antes de empezar
+Tarea: [tipo en pocas palabras].
+Modelo sugerido: [Modelo · effort] (ahora estás en [modelo actual]).
+Por qué: [una línea: misma calidad y menos costo / esta tarea necesita más capacidad].
+
+Para seguir:
+1. Cambia el modelo en el selector y responde "continúa".
+2. O responde "sigue aquí" para hacerlo con [modelo actual].
+```
+
+Si hay una herramienta de opciones con botones (como `ask_user_input_v0`), úsala para la pregunta, con dos opciones: "Ya cambié de modelo, continúa" y "Sigue con el modelo actual". Recuerda que pulsar un botón no cambia el modelo; el cambio lo hace el usuario en el selector.
+
+Después del mensaje, **termina el turno**. No sigas escribiendo.
+
+### 4. Cuando el usuario responde
+- El pedido original ya está en la conversación: hazlo completo con el modelo que esté corriendo ahora, sin pedir que lo repita y sin volver a frenar.
+- Si responde con algo que no es una elección (otra pregunta, más datos), trátalo como un mensaje nuevo y aplica la compuerta de nuevo.
+- Alternativa más limpia que puedes mencionar si el usuario pregunta: editar el mensaje original y reenviarlo con el modelo nuevo, así el mensaje de la compuerta sale del contexto.
+
+### Lo que la compuerta NO ahorra
+El turno de la compuerta igual paga la entrada (system prompt, la skill y el mensaje del usuario) en el modelo actual. Lo que ahorra es la respuesta larga y el razonamiento del modelo caro. Por eso solo vale la pena en tareas sustanciales.
 
 ## Paso 1 — Clasificar la tarea
 
