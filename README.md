@@ -14,6 +14,7 @@
   <a href="LICENSE"><img alt="Licencia MIT + Commons Clause" src="https://img.shields.io/badge/licencia-MIT%20%2B%20Commons%20Clause-green"></a>
   <img alt="Versión" src="https://img.shields.io/badge/versión-1.2.0-blue">
   <img alt="Claude.ai, Cowork y Claude Code" src="https://img.shields.io/badge/funciona%20en-Claude.ai%20%7C%20Cowork%20%7C%20Claude%20Code-orange">
+  <a href="https://paypal.me/jorgeca2510"><img alt="Donar con PayPal" src="https://img.shields.io/badge/donar-PayPal-00457C?logo=paypal&logoColor=white"></a>
 </p>
 
 <p align="center"><a href="README.en.md">English version</a></p>
@@ -140,6 +141,10 @@ Las contribuciones son bienvenidas; lee [CONTRIBUTING.md](CONTRIBUTING.md).
 - El turno de la compuerta igual paga la entrada (instrucciones, skill y tu mensaje) en el modelo actual. Lo que ahorra es la respuesta larga y el razonamiento del modelo caro, por eso solo frena en tareas sustanciales.
 - Los nombres de modelos y los precios cambian. La tabla de precios indica su fecha de verificación; si sale un modelo nuevo, EcoRun aplica el mismo criterio por familia (Haiku, Sonnet, Opus, Fable) y avisa que la tabla puede estar desactualizada.
 - Las cifras de ahorro citadas vienen de pruebas publicadas por Anthropic. Tu ahorro real depende de tus tareas; mídelo con `/usage` en Claude Code.
+
+## Apoya EcoRun
+
+EcoRun es gratis y lo seguirá siendo. Si te ahorra tokens y quieres apoyar su mantenimiento, puedes hacer una donación voluntaria por [PayPal](https://paypal.me/jorgeca2510). Darle una estrella al repositorio también ayuda a que más gente lo encuentre.
 
 ## Licencia
 

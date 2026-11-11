@@ -91,6 +91,10 @@ It triggers on its own at the start of substantial tasks, or when you talk about
 - Model names and prices change. The price table shows when it was last checked; with a newer model, EcoRun applies the same rules per family and flags that the table may be outdated.
 - Savings figures come from Anthropic's published tests. Your real savings depend on your tasks; measure them with `/usage` in Claude Code.
 
+## Support EcoRun
+
+EcoRun is free and will stay free. If it saves you tokens and you'd like to support its maintenance, you can make a voluntary donation via [PayPal](https://paypal.me/jorgeca2510). Starring the repository also helps more people find it.
+
 ## License
 
 [MIT + Commons Clause](LICENSE) © 2026 Jorge Cabrera.
