@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: configurar-claude-code
+expected_outcome: |
+  Explica que los subagentes pueden correr en Haiku (con model: haiku o el plugin de EcoRun) para búsquedas, logs y extracción, que las ediciones y decisiones se quedan en el modelo principal, que la sesión principal se cambia con /model, y advierte no activar CLAUDE_CODE_SUBAGENT_MODEL_FORCE.

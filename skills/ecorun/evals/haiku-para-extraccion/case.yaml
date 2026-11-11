@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: haiku-para-extraccion
+expected_outcome: |
+  Recomienda Haiku (o Sonnet si los documentos son difíciles de leer) para la extracción, propone revisar los valores dudosos y no exige Opus ni Fable para esta tarea.

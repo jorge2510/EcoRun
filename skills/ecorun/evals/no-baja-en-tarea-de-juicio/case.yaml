@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: no-baja-en-tarea-de-juicio
+expected_outcome: |
+  Aunque la pregunta es corta y el usuario quiere ahorrar, la tarea requiere juicio de diseño, así que no baja a Haiku; usa Opus (o como mínimo un modelo capaz) y responde la pregunta.
